@@ -14,7 +14,11 @@ const createComment = ({ comment = '', userData = {} }) => {
   }).then((response) => response.data);
 };
 
-const updateComment = () => {
+const updateComment = ({ commentId, comment }) => {
+  return axios.patch(`http://localhost:3040/comments/${commentId}`, {
+    content: comment,
+    createdAt: Date.now(),
+  }).then((response) => response.data);
 };
 
 const deleteComment = ({ commentId }) => {

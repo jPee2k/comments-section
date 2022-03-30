@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Modal from 'components/Modal';
 
-const ControlBar = ({ commentId, setComments, handleLoader }) => {
+const ControlBar = ({ commentId, setComments, editComment, handleLoader }) => {
   const [isVisible, setVisibility] = useState(false);
   const handleOpen = () => setVisibility(true);
   const handleClose = () => setVisibility(false);
@@ -19,7 +19,9 @@ const ControlBar = ({ commentId, setComments, handleLoader }) => {
     handleOpen();
   };
 
-  const editHandler = () => {};
+  const editHandler = () => {
+    editComment();
+  };
 
   return (
     <div>
@@ -49,6 +51,7 @@ ControlBar.propTypes = {
   commentId: PropTypes.number.isRequired,
   setComments: PropTypes.func.isRequired,
   handleLoader: PropTypes.func,
+  editComment: PropTypes.func,
 };
 
 export default ControlBar;
