@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Card = styled.li`
+export const ListItem = styled.li`
+  margin-bottom: 16px;
+`;
+
+export const Card = styled.div`
   padding: 16px;
   border-radius: 5px;
   background-color: #fff;
@@ -49,4 +53,13 @@ export const Badge = styled.div`
 export const To = styled.span`
   font-weight: 700;
   color: #5e60aa;
+`;
+
+export const ReplayList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  padding-left: 12px;
+  border-left: 2px solid #c3c2e1;
 `;

@@ -40,7 +40,10 @@ const ControlBar = ({ commentId, setComments, editComment, handleLoader }) => {
         Delete
       </Button>
 
-      <Modal type={type} data={{ commentId, setComments }} isVisible={isVisible}
+      <Modal
+        type={type}
+        isVisible={isVisible}
+        data={{ commentId, setComments }}
         handleClose={handleClose} handleLoader={handleLoader}
       />
     </div>

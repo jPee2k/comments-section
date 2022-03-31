@@ -26,6 +26,16 @@ const deleteComment = ({ commentId }) => {
     .then((response) => response);
 };
 
+const replyComment = ({ commentId = null, comment = '', userData = {} }) => {
+  return axios.post(`http://localhost:3040/comments`, {
+    commentId,
+    content: comment,
+    user: userData,
+    score: 0,
+    createdAt: Date.now(),
+  }).then((response) => response.data);
+};
+
 const updateScore = ({ commentId, score = 0 }) => {
   return axios.patch(`http://localhost:3040/comments/${commentId}`, { score })
     .then((response) => response.data);
@@ -37,4 +47,5 @@ export {
   updateComment,
   updateScore,
   deleteComment,
+  replyComment,
 };

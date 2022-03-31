@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -11,7 +11,8 @@ import Button from '@mui/material/Button';
 
 const ModalDeleteComment = ({ handleLoader, handleClose, data = {} }) => {
   const { commentId, setComments } = data;
-  const { isSuccess, isLoading, isError, error, mutate } = useMutation(deleteComment, {
+  const { isSuccess, isLoading, isError, mutate } = useMutation(deleteComment, {
+    onError: (error) => toast.error(error?.message),
     onSuccess: () => {
       setComments((prevCommets) => prevCommets.filter(({ id }) => id !== commentId));
       handleClose();
@@ -19,9 +20,6 @@ const ModalDeleteComment = ({ handleLoader, handleClose, data = {} }) => {
   });
 
   useLoader({ isSuccess, isLoading, isError, handleLoader });
-  useEffect(() => {
-    error && toast.error(error?.message);
-  }, [isError]);
 
   return (
     <>

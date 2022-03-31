@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { ToastContainer, toast } from 'react-toastify';
 
-import fetchUserData from 'services/UserAPI.js';
+import fetchUserData from 'services/userAPI.js';
 import useLoader from 'hooks/useLoader.js';
 
 import CommentsBlock from 'components/CommentsBlock';

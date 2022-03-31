@@ -5,29 +5,29 @@ import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { createComment } from 'services/commentsAPI.js';
+import { replyComment } from 'services/commentsAPI.js';
 import useLoader from 'hooks/useLoader.js';
 
+import { ReplyWrapper } from 'components/Wrapper/Wrapper.jsx';
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import Wrapper from 'components/Wrapper';
 
 import { Container, TextArea, Label, Error } from './styles.js';
 
-const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
-  const { isLoading, isSuccess, isError, mutateAsync } = useMutation(createComment, {
-    onSuccess: (data) => setComment(data),
+const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader }) => {
+  const { isLoading, isSuccess, isError, mutateAsync } = useMutation(replyComment, {
+    onSuccess: (newComment) => addReply(newComment),
     onError: (error) => toast.error(error?.message),
   });
   useLoader({ isSuccess, isLoading, isError, handleLoader });
 
-  const submitHandler = async (values, { setSubmitting, resetForm }) => {
+  const submitHandler = async (values, { setSubmitting }) => {
     await mutateAsync({
-      comment: values.comment.trim(),
+      commentId,
       userData,
+      comment: values.comment.trim(),
     });
     setSubmitting(false);
-    resetForm();
+    hideReplyForm();
   };
 
   const schema = yup.object({
@@ -37,16 +37,15 @@ const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
       .required(),
   });
 
-  const { username = '', image = {} } = userData;
   return (
     <>
-      <Wrapper>
+      <ReplyWrapper>
         <Formik
           initialValues={{ comment: '' }}
           validationSchema={schema}
           onSubmit={submitHandler}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting}) => (
             <>
               <Form id="comment">
                 <Label>
@@ -56,29 +55,33 @@ const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
               </Form>
 
               <Container>
-                <Avatar alt={username} src={image.png} srcSet={image.webp}/>
-                <Button variant="contained" type="submit" form="comment" disabled={isSubmitting || isLoading}>
-                  Send
+                <Button
+                  type="submit"
+                  form="comment"
+                  variant="contained"
+                  disabled={isSubmitting || isLoading}
+                  sx={{ marginLeft: 'auto' }}
+                >
+                  Reply
                 </Button>
               </Container>
             </>
           )}
         </Formik>
-      </Wrapper>
+      </ReplyWrapper>
     </>
   );
 };
 
-CommentForm.propTypes = {
+ReplyForm.propTypes = {
+  commentId: PropTypes.number.isRequired,
   userData: PropTypes.shape({
-    image: PropTypes.shape({
-      png: PropTypes.string,
-      webp: PropTypes.string,
-    }),
+    image: PropTypes.objectOf(PropTypes.string),
     username: PropTypes.string,
-  }),
-  setComment: PropTypes.func,
+  }).isRequired,
   handleLoader: PropTypes.func,
+  hideReplyForm: PropTypes.func,
+  addReply: PropTypes.func,
 };
 
-export default CommentForm;
+export default ReplyForm;
