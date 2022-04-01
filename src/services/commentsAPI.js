@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://api-comments-section.herokuapp.com';
 
 const getComments = () => {
-  const url = new URL('/comments', BASE_URL);
+  const url = new URL('/comments?_sort=score&_order=desc', BASE_URL);
   return axios
     .get(url.toString())
     .then((response) => response.data);
