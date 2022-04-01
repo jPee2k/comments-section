@@ -46,7 +46,7 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
         >
           {({ isSubmitting }) => (
             <>
-              <Form id="comment">
+              <Form id={`comment-${commentId}`}>
                 <Label>
                   <TextArea name="comment" component="textarea" placeholder="Add a comment..."/>
                   <Error name="comment" component="span"/>
@@ -54,8 +54,12 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
               </Form>
 
               <Container>
-                <Button variant="contained" type="submit" form="comment"
-                  disabled={isSubmitting || isLoading} sx={{ marginLeft: 'auto' }}
+                <Button
+                  type="submit"
+                  form={`comment-${commentId}`}
+                  variant="contained"
+                  disabled={isSubmitting || isLoading}
+                  sx={{ marginLeft: 'auto' }}
                 >
                   Update
                 </Button>

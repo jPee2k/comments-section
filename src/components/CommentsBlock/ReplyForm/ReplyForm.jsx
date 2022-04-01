@@ -47,7 +47,7 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
         >
           {({ isSubmitting}) => (
             <>
-              <Form id="comment">
+              <Form id={`comment-${commentId}`}>
                 <Label>
                   <TextArea name="comment" component="textarea" placeholder="Add a comment..."/>
                   <Error name="comment" component="span"/>
@@ -57,7 +57,7 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
               <Container>
                 <Button
                   type="submit"
-                  form="comment"
+                  form={`comment-${commentId}`}
                   variant="contained"
                   disabled={isSubmitting || isLoading}
                   sx={{ marginLeft: 'auto' }}
