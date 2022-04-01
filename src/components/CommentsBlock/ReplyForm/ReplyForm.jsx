@@ -21,6 +21,11 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
   useLoader({ isSuccess, isLoading, isError, handleLoader });
 
   const submitHandler = async (values, { setSubmitting }) => {
+    if (!values.comment.trim()) {
+      hideReplyForm();
+      return;
+    }
+
     await mutateAsync({
       commentId,
       userData,
@@ -33,8 +38,7 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
   const schema = yup.object({
     comment: yup.string()
       .min(3)
-      .max(1024)
-      .required(),
+      .max(1024),
   });
 
   return (
@@ -45,11 +49,11 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
           validationSchema={schema}
           onSubmit={submitHandler}
         >
-          {({ isSubmitting}) => (
+          {({ isSubmitting }) => (
             <>
               <Form id={`comment-${commentId}`}>
                 <Label>
-                  <TextArea name="comment" component="textarea" placeholder="Add a comment..."/>
+                  <TextArea name="comment" component="textarea" placeholder="Add a comment..." autoFocus/>
                   <Error name="comment" component="span"/>
                 </Label>
               </Form>

@@ -21,6 +21,11 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
   useLoader({ isSuccess, isLoading, isError, handleLoader });
 
   const submitHandler = async (values, { setSubmitting }) => {
+    if (value === values.comment) {
+      showComment();
+      return;
+    }
+
     await mutateAsync({
       commentId,
       comment: values.comment.trim(),
@@ -33,7 +38,7 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
     comment: yup.string()
       .min(3)
       .max(1024)
-      .required(),
+      .required('the field can`t be empty'),
   });
 
   return (
@@ -48,7 +53,7 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
             <>
               <Form id={`comment-${commentId}`}>
                 <Label>
-                  <TextArea name="comment" component="textarea" placeholder="Add a comment..."/>
+                  <TextArea name="comment" component="textarea" placeholder="Add a comment..." autoFocus/>
                   <Error name="comment" component="span"/>
                 </Label>
               </Form>

@@ -34,7 +34,7 @@ const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
     comment: yup.string()
       .min(3)
       .max(1024)
-      .required(),
+      .required('the field can`t be empty'),
   });
 
   const { username = '', image = {} } = userData;
@@ -50,7 +50,7 @@ const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
             <>
               <Form id="comment">
                 <Label>
-                  <TextArea name="comment" component="textarea" placeholder="Add a comment..."/>
+                  <TextArea name="comment" component="textarea" placeholder="Add a comment..." autoFocus/>
                   <Error name="comment" component="span"/>
                 </Label>
               </Form>
