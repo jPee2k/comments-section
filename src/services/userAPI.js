@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://api-comments-section.herokuapp.com';
+
 const fetchUserData = () => {
-  return axios.get('http://localhost:3040/currentUser')
+  const url = new URL('/currentUser', BASE_URL);
+  return axios
+    .get(url.toString())
     .then((response) => response.data);
 };
 

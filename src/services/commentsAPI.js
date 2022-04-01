@@ -1,43 +1,60 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://api-comments-section.herokuapp.com';
+
 const getComments = () => {
-  return axios.get('http://localhost:3040/comments')
+  const url = new URL('/comments', BASE_URL);
+  return axios
+    .get(url.toString())
     .then((response) => response.data);
 };
 
 const createComment = ({ comment = '', userData = {} }) => {
-  return axios.post('http://localhost:3040/comments', {
-    content: comment,
-    user: userData,
-    score: 0,
-    createdAt: Date.now(),
-  }).then((response) => response.data);
+  const url = new URL('/comments', BASE_URL);
+  return axios
+    .post(url.toString(), {
+      content: comment,
+      user: userData,
+      score: 0,
+      createdAt: Date.now(),
+    })
+    .then((response) => response.data);
 };
 
 const updateComment = ({ commentId, comment }) => {
-  return axios.patch(`http://localhost:3040/comments/${commentId}`, {
-    content: comment,
-    createdAt: Date.now(),
-  }).then((response) => response.data);
+  const url = new URL(`/comments/${commentId}`, BASE_URL);
+  return axios
+    .patch(url.toString(), {
+      content: comment,
+      createdAt: Date.now(),
+    })
+    .then((response) => response.data);
 };
 
 const deleteComment = ({ commentId }) => {
-  return axios.delete(`http://localhost:3040/comments/${commentId}`)
+  const url = new URL(`/comments/${commentId}`, BASE_URL);
+  return axios
+    .delete(url.toString())
     .then((response) => response);
 };
 
 const replyComment = ({ commentId = null, comment = '', userData = {} }) => {
-  return axios.post(`http://localhost:3040/comments`, {
-    commentId,
-    content: comment,
-    user: userData,
-    score: 0,
-    createdAt: Date.now(),
-  }).then((response) => response.data);
+  const url = new URL('/comments', BASE_URL);
+  return axios
+    .post(url.toString(), {
+      commentId,
+      content: comment,
+      user: userData,
+      score: 0,
+      createdAt: Date.now(),
+    })
+    .then((response) => response.data);
 };
 
 const updateScore = ({ commentId, score = 0 }) => {
-  return axios.patch(`http://localhost:3040/comments/${commentId}`, { score })
+  const url = new URL(`/comments/${commentId}`, BASE_URL);
+  return axios
+    .patch(url.toString(), { score })
     .then((response) => response.data);
 };
 
