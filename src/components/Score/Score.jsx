@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
 
-import { updateScore } from '../../services/commentsAPI.js';
+import { updateScore } from 'services/commentsAPI.js';
 import { Button, Value, Container } from './styles.js';
 
 import CircularProgress from '@mui/material/CircularProgress';
