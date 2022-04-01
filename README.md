@@ -1,4 +1,4 @@
-![eslint](https://github.com/jPee2k/https://github.com/jPee2k/api-comments-section/actions/workflows/eslint.yml/badge.svg)
+![eslint](https://github.com/jPee2k/comments-section/actions/workflows/eslint.yml/badge.svg)
 
 # Comments section
 
