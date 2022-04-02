@@ -28,20 +28,21 @@ const ControlBar = ({ commentId, setComments, editComment, handleLoader }) => {
   return (
     <Control>
       <Button
-        color="primary"
-        sx={{ textTransform: 'capitalize', fontWeight: 700 }}
-        startIcon={<EditOutlinedIcon fontSize="small"/>}
-        onClick={editHandler}
-      >
-        Edit
-      </Button>
-      <Button
         color="error"
         sx={{ textTransform: 'capitalize', fontWeight: 700 }}
         startIcon={<DeleteIcon fontSize="small"/>}
         onClick={deleteHandler}
       >
         Delete
+      </Button>
+
+      <Button
+        color="primary"
+        sx={{ textTransform: 'capitalize', fontWeight: 700 }}
+        startIcon={<EditOutlinedIcon fontSize="small"/>}
+        onClick={editHandler}
+      >
+        Edit
       </Button>
 
       <Modal

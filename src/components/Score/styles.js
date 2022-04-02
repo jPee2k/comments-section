@@ -14,7 +14,7 @@ export const Container = styled.div`
   border-radius: 8px;
   background-color: #f5f6fb;
 
-  @media screen and (min-width: 560px) {
+  @media screen and (min-width: 640px) {
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;

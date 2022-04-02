@@ -7,7 +7,7 @@ export const Control = styled.div`
   row-gap: 8px;
   column-gap: 4px;
 
-  @media screen and (min-width: 560px) {
+  @media screen and (min-width: 640px) {
     flex-wrap: nowrap;
     margin-left: auto;
   }

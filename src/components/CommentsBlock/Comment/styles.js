@@ -11,7 +11,7 @@ export const Card = styled.div`
 
   margin-bottom: 16px;
 
-  @media screen and (min-width: 560px) {
+  @media screen and (min-width: 640px) {
     display: grid;
     grid-template-areas: 'footer header'
                          'footer body';
@@ -26,7 +26,7 @@ export const CardHeader = styled.header`
   justify-content: flex-start;
   gap: 12px;
 
-  @media screen and (min-width: 560px) {
+  @media screen and (min-width: 640px) {
     grid-area: header;
   }
 `;
@@ -38,7 +38,7 @@ export const CardFooter = styled.footer`
   flex-wrap: nowrap;
   gap: 14px;
 
-  @media screen and (min-width: 560px) {
+  @media screen and (min-width: 640px) {
     grid-area: footer;
     align-items: start;
   }
@@ -83,4 +83,15 @@ export const ReplayList = styled.ul`
 
   padding-left: 12px;
   border-left: 2px solid #c3c2e1;
+
+  @media screen and (min-width: 640px) {
+    padding-left: 30px;
+    margin-left: 30px;
+  }
+`;
+
+export const P = styled.p`
+  @media screen and (min-width: 640px) {
+    margin-bottom: 0;
+  }
 `;

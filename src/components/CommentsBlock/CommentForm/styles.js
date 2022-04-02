@@ -1,5 +1,25 @@
 import styled from 'styled-components';
-import { Field, ErrorMessage } from 'formik';
+import { Field, Form as FormikForm, ErrorMessage } from 'formik';
+
+import { Avatar as MuiAvatar, Button as MuiButton } from '@mui/material';
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 12px;
+
+  padding: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+`;
+
+export const ReplyWrapper = styled(Wrapper)`
+  margin-top: -10px;
+  margin-bottom: 16px;
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -8,10 +28,26 @@ export const Container = styled.div`
   gap: 16px;
 `;
 
+export const Form = styled(FormikForm)`
+  width: 100%;
+
+  @media screen and (min-width: 640px) {
+    width: auto;
+    flex-grow: 1;
+  }
+`;
+
 export const Label = styled.label`
   display: block;
-  margin-bottom: 8px;
 `;
+
+export const Avatar = styled(MuiAvatar)`
+  @media screen and (min-width: 640px) {
+    order: -1;
+  }
+`;
+
+export const Button = styled(MuiButton)``;
 
 export const TextArea = styled(Field)`
   box-sizing: border-box;

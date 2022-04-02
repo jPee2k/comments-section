@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
@@ -8,11 +8,9 @@ import { toast } from 'react-toastify';
 import { replyComment } from 'services/commentsAPI.js';
 import useLoader from 'hooks/useLoader.js';
 
-import { ReplyWrapper } from 'components/Wrapper/Wrapper.jsx';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-
-import { Container, TextArea, Label, Error } from 'components/CommentsBlock/CommentForm/styles.js';
+import {
+  ReplyWrapper, Form, TextArea, Avatar, Button, Label, Error
+} from 'components/CommentsBlock/CommentForm/styles.js';
 
 const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader }) => {
   const { isLoading, isSuccess, isError, mutateAsync } = useMutation(replyComment, {
@@ -60,18 +58,16 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
                 </Label>
               </Form>
 
-              <Container>
-                <Avatar alt={username} src={image.png} srcSet={image.webp}/>
-                <Button
-                  type="submit"
-                  form={`comment-${commentId}`}
-                  variant="contained"
-                  disabled={isSubmitting || isLoading}
-                  sx={{ marginLeft: 'auto' }}
-                >
-                  Reply
-                </Button>
-              </Container>
+              <Avatar alt={username} src={image.png} srcSet={image.webp}/>
+              <Button
+                type="submit"
+                form={`comment-${commentId}`}
+                variant="contained"
+                disabled={isSubmitting || isLoading}
+                sx={{ marginLeft: 'auto' }}
+              >
+                Reply
+              </Button>
             </>
           )}
         </Formik>

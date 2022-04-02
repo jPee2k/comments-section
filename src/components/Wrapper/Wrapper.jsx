@@ -6,9 +6,4 @@ const Wrapper = styled.div`
   background-color: #fff;
 `;
 
-export const ReplyWrapper = styled(Wrapper)`
-  margin-top: -10px;
-  margin-bottom: 16px;
-`;
-
 export default Wrapper;

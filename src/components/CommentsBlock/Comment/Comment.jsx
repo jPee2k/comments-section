@@ -13,7 +13,7 @@ import Score from 'components/Score';
 import Avatar from '@mui/material/Avatar';
 
 import {
-  ListItem, Card, CardBody, CardFooter, CardHeader, DateTime, UserName, Badge, To, ReplayList,
+  ListItem, Card, CardBody, CardFooter, CardHeader, DateTime, UserName, Badge, To, ReplayList, P
 } from './styles.js';
 
 const Comment = ({ id, isAuth = false, data = {}, currentUser = {}, handleLoader }) => {
@@ -49,7 +49,7 @@ const Comment = ({ id, isAuth = false, data = {}, currentUser = {}, handleLoader
           <DateTime dateTime={getDateTime(createdAt)}>
             {moment(createdAt).fromNow()}
           </DateTime>
-          <Media query="(min-width: 560px)" render={() => {
+          <Media query="(min-width: 640px)" render={() => {
             if (isCurrentUsersComment) {
               return <ControlBar
                 commentId={id}
@@ -70,12 +70,12 @@ const Comment = ({ id, isAuth = false, data = {}, currentUser = {}, handleLoader
               setComment={setComment}
               handleLoader={handleLoader}
             />
-            : <p>{replyingTo && <To>@{replyingTo}</To>} {comment}</p>
+            : <P>{replyingTo && <To>@{replyingTo}</To>} {comment}</P>
           }
         </CardBody>
         <CardFooter>
           <Score commentId={id} isAuth={isAuth} value={score}/>
-          <Media query="(max-width: 559px)" render={() => {
+          <Media query="(max-width: 639px)" render={() => {
             if (isCurrentUsersComment) {
               return <ControlBar
                 commentId={id}

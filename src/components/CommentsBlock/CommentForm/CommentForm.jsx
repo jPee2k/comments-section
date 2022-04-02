@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
@@ -8,11 +8,7 @@ import { toast } from 'react-toastify';
 import { createComment } from 'services/commentsAPI.js';
 import useLoader from 'hooks/useLoader.js';
 
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import Wrapper from 'components/Wrapper';
-
-import { Container, TextArea, Label, Error } from './styles.js';
+import { Wrapper, Form, TextArea, Avatar, Button, Label, Error } from './styles.js';
 
 const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
   const { isLoading, isSuccess, isError, mutateAsync } = useMutation(createComment, {
@@ -55,12 +51,10 @@ const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
                 </Label>
               </Form>
 
-              <Container>
-                <Avatar alt={username} src={image.png} srcSet={image.webp}/>
-                <Button variant="contained" type="submit" form="comment" disabled={isSubmitting || isLoading}>
-                  Send
-                </Button>
-              </Container>
+              <Avatar alt={username} src={image.png} srcSet={image.webp}/>
+              <Button variant="contained" type="submit" form="comment" disabled={isSubmitting || isLoading}>
+                Send
+              </Button>
             </>
           )}
         </Formik>

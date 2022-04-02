@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
@@ -8,10 +8,8 @@ import { toast } from 'react-toastify';
 import { updateComment } from 'services/commentsAPI.js';
 import useLoader from 'hooks/useLoader.js';
 
-import Button from '@mui/material/Button';
-import Wrapper from 'components/Wrapper';
-
-import { Container, TextArea, Label, Error } from 'components/CommentsBlock/CommentForm/styles.js';
+import { Container, Form, TextArea, Button, Label, Error } from 'components/CommentsBlock/CommentForm/styles.js';
+import { Wrapper } from './styles.js'
 
 const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLoader }) => {
   const { isLoading, isSuccess, isError, mutateAsync } = useMutation(updateComment, {
@@ -43,7 +41,7 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
 
   return (
     <>
-      <Wrapper style={{ paddingLeft: 0, paddingRight: 0 }}>
+      <Wrapper>
         <Formik
           initialValues={{ comment: value }}
           validationSchema={schema}
