@@ -11,7 +11,7 @@ import useLoader from 'hooks/useLoader.js';
 import Button from '@mui/material/Button';
 import Wrapper from 'components/Wrapper';
 
-import { Container, TextArea, Label, Error } from './styles.js';
+import { Container, TextArea, Label, Error } from 'components/CommentsBlock/CommentForm/styles.js';
 
 const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLoader }) => {
   const { isLoading, isSuccess, isError, mutateAsync } = useMutation(updateComment, {
@@ -43,7 +43,7 @@ const UpdateCommentForm = ({ value, commentId, showComment, setComment, handleLo
 
   return (
     <>
-      <Wrapper>
+      <Wrapper style={{ paddingLeft: 0, paddingRight: 0 }}>
         <Formik
           initialValues={{ comment: value }}
           validationSchema={schema}

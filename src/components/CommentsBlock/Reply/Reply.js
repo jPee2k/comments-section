@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 
 const Reply = ({ showReplyForm }) => {
   return (
-    <Button sx={{ textTransform: 'capitalize', color: '#5e60aa' }}
-      size="small"
+    <Button sx={{ textTransform: 'capitalize', fontWeight: 700, ml: 'auto' }}
+      color="primary"
       startIcon={<ReplyIcon fontSize="small"/>}
       onClick={() => showReplyForm()}
     >Reply</Button>

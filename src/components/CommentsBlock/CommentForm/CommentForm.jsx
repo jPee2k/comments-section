@@ -50,7 +50,7 @@ const CommentForm = ({ userData = {}, setComment, handleLoader }) => {
             <>
               <Form id="comment">
                 <Label>
-                  <TextArea name="comment" component="textarea" placeholder="Add a comment..." autoFocus/>
+                  <TextArea name="comment" component="textarea" placeholder="Add a comment..."/>
                   <Error name="comment" component="span"/>
                 </Label>
               </Form>

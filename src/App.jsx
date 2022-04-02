@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <>
-      <Container maxWidth="320px">
+      <Container maxWidth="720px">
         <CommentsBlock userData={data} isAuth={isSuccess} handleLoader={setVisibility}/>
         <ToastContainer/>
       </Container>

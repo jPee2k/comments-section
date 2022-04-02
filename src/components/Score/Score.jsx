@@ -39,7 +39,7 @@ const Score = ({ commentId, value = 0, isAuth = false }) => {
 
   if (isLoading) {
     return (
-      <Container>
+      <Container style={{ justifyContent: 'center' }}>
         <CircularProgress size={24}/>
       </Container>
     );

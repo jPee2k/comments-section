@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Media from 'react-media';
 
 import { getDateTime } from 'helpers/time.js';
 
 import UpdateCommentForm from 'components/CommentsBlock/UpdateCommentForm';
-import ReplyForm from '../ReplyForm';
+import ReplyForm from 'components/CommentsBlock/ReplyForm';
 import Reply from 'components/CommentsBlock/Reply';
+import ControlBar from 'components/CommentsBlock/ControlBar';
 import Score from 'components/Score';
 import Avatar from '@mui/material/Avatar';
 
-import { Control } from 'components/CommentsBlock/ControlBar/styles.js';
 import {
   ListItem, Card, CardBody, CardFooter, CardHeader, DateTime, UserName, Badge, To, ReplayList,
 } from './styles.js';
@@ -48,6 +49,17 @@ const Comment = ({ id, isAuth = false, data = {}, currentUser = {}, handleLoader
           <DateTime dateTime={getDateTime(createdAt)}>
             {moment(createdAt).fromNow()}
           </DateTime>
+          <Media query="(min-width: 560px)" render={() => {
+            if (isCurrentUsersComment) {
+              return <ControlBar
+                commentId={id}
+                setComments={setComments}
+                editComment={() => setEdit(true)}
+                handleLoader={handleLoader}
+              />;
+            }
+            return <Reply showReplyForm={showReplyForm}/>;
+          }}/>
         </CardHeader>
         <CardBody>
           {isEdit
@@ -63,14 +75,17 @@ const Comment = ({ id, isAuth = false, data = {}, currentUser = {}, handleLoader
         </CardBody>
         <CardFooter>
           <Score commentId={id} isAuth={isAuth} value={score}/>
-          {isCurrentUsersComment
-            ? <Control
-              commentId={id}
-              setComments={setComments}
-              editComment={() => setEdit(true)}
-              handleLoader={handleLoader}
-            />
-            : <Reply showReplyForm={showReplyForm}/>}
+          <Media query="(max-width: 559px)" render={() => {
+            if (isCurrentUsersComment) {
+              return <ControlBar
+                commentId={id}
+                setComments={setComments}
+                editComment={() => setEdit(true)}
+                handleLoader={handleLoader}
+              />;
+            }
+            return <Reply showReplyForm={showReplyForm}/>;
+          }}/>
         </CardFooter>
       </Card>
 

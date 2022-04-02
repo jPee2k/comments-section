@@ -9,9 +9,10 @@ import { replyComment } from 'services/commentsAPI.js';
 import useLoader from 'hooks/useLoader.js';
 
 import { ReplyWrapper } from 'components/Wrapper/Wrapper.jsx';
+import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 
-import { Container, TextArea, Label, Error } from './styles.js';
+import { Container, TextArea, Label, Error } from 'components/CommentsBlock/CommentForm/styles.js';
 
 const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader }) => {
   const { isLoading, isSuccess, isError, mutateAsync } = useMutation(replyComment, {
@@ -41,6 +42,7 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
       .max(1024),
   });
 
+  const { username = '', image = {} } = userData;
   return (
     <>
       <ReplyWrapper>
@@ -59,6 +61,7 @@ const ReplyForm = ({ commentId, userData, hideReplyForm, addReply, handleLoader 
               </Form>
 
               <Container>
+                <Avatar alt={username} src={image.png} srcSet={image.webp}/>
                 <Button
                   type="submit"
                   form={`comment-${commentId}`}

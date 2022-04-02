@@ -16,6 +16,9 @@ export const Label = styled.label`
 export const TextArea = styled(Field)`
   box-sizing: border-box;
 
+  font-family: "Raleway", "Roboto", -apple-system, Arial, sans-serif;
+  font-size: 16px;
+
   width: 100%;
   height: 100px;
   resize: none;
@@ -24,10 +27,16 @@ export const TextArea = styled(Field)`
   margin: 0;
 
   border-radius: 6px;
-  border: 1px solid lightgray;
-  outline-color: gray;
+  border: 1px solid #ebebeb;
+  outline-color: #5f5a83;
+
+  &::placeholder {
+    font: inherit;
+    font-weight: 300;
+    color: #68727e;
+  }
 `;
 
 export const Error = styled(ErrorMessage)`
-  color: tomato;
+  color: #ee6368;
 `;

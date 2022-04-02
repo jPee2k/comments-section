@@ -23,10 +23,10 @@ const ModalDeleteComment = ({ handleLoader, handleClose, data = {} }) => {
 
   return (
     <>
-      <Typography id="modal-modal-title" variant="h6" component="h2">
+      <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontWeight: 700 }}>
         Delete comment
       </Typography>
-      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      <Typography id="modal-modal-description" color="secondary" sx={{ mt: 2 }}>
         Are you sure you want to delete this comment? This will remove the comment and can`t be undone.
       </Typography>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>

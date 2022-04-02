@@ -1,7 +1,14 @@
 import styled from 'styled-components';
-import ControlBar from './ControlBar.jsx';
 
-export const Control = styled(ControlBar)`
+export const Control = styled.div`
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 8px;
+  column-gap: 4px;
+
+  @media screen and (min-width: 560px) {
+    flex-wrap: nowrap;
+    margin-left: auto;
+  }
 `;

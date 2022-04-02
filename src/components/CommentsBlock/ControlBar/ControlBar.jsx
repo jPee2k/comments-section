@@ -6,6 +6,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Modal from 'components/Modal';
 
+import { Control } from './styles.js';
+
 const ControlBar = ({ commentId, setComments, editComment, handleLoader }) => {
   const [isVisible, setVisibility] = useState(false);
   const handleOpen = () => setVisibility(true);
@@ -24,16 +26,18 @@ const ControlBar = ({ commentId, setComments, editComment, handleLoader }) => {
   };
 
   return (
-    <div>
-      <Button size="small" color="error"
-        sx={{ textTransform: 'capitalize', color: '#5e60aa' }}
+    <Control>
+      <Button
+        color="primary"
+        sx={{ textTransform: 'capitalize', fontWeight: 700 }}
         startIcon={<EditOutlinedIcon fontSize="small"/>}
         onClick={editHandler}
       >
         Edit
       </Button>
-      <Button size="small" color="error"
-        sx={{ textTransform: 'capitalize' }}
+      <Button
+        color="error"
+        sx={{ textTransform: 'capitalize', fontWeight: 700 }}
         startIcon={<DeleteIcon fontSize="small"/>}
         onClick={deleteHandler}
       >
@@ -46,7 +50,7 @@ const ControlBar = ({ commentId, setComments, editComment, handleLoader }) => {
         data={{ commentId, setComments }}
         handleClose={handleClose} handleLoader={handleLoader}
       />
-    </div>
+    </Control>
   );
 };
 
